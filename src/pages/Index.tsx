@@ -83,7 +83,7 @@ const Index = () => {
   ]);
 
   const [editingLoan, setEditingLoan] = useState<Loan | undefined>(undefined);
-  const [editingBill, setBill] = useState<Bill | undefined>(undefined);
+  const [editingBill, setEditingBill] = useState<Bill | undefined>(undefined);
 
   const handleAddLoan = (loanData: Omit<Loan, 'id'>) => {
     const newLoan: Loan = {
@@ -133,7 +133,7 @@ const Index = () => {
     setBills(prev => prev.map(bill => 
       bill.id === updatedBill.id ? updatedBill : bill
     ));
-    setBill(undefined);
+    setEditingBill(undefined);
     toast({
       title: "Bill Updated",
       description: `${updatedBill.name} has been updated.`
@@ -313,7 +313,7 @@ const Index = () => {
                   <BillCard
                     key={bill.id}
                     bill={bill}
-                    onEdit={setBill}
+                    onEdit={setEditingBill}
                     onDelete={handleDeleteBill}
                   />
                 ))}
